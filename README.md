@@ -19,6 +19,8 @@ Connected to a cluster in MongoDB. I'm pushing my .env because this is a dummy p
 
 Testing WIP (I have literally never tested backend so I'll probably create simple unit tests on the front to be honest). Nothing to test because there's no front yet.
 
+I should split package json into two probably. No point on installing all dependencies if I want to maybe split starting of server and front end. Will also be easier to deploy. I'm pretty sure Docker would be a great solution here but I have no idea what docker does.
+
 ## Available Scripts
 
 ### `yarn start`
