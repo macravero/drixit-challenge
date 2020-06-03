@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
+import axios from 'axios';
+
 import './App.css';
 
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ1ZDZmYTY3MGQyZTczZWQ3Mzk4MjUiLCJpYXQiOjE1OTExNDcxOTR9.afi5ffXlFOELpalh0ZRCOwrfL1gQObWmlloJ-mBOw1M'
+const config = {
+  headers: {
+    'Accept': '*/*',
+    'auth-token': token
+  }
+}
 function App() {
+  useEffect(()=>{
+    const getUser = async () =>{
+      try{
+      const url = 'http://localhost:3001/api/user/user-info';
+      const res = await axios.get(url, config)
+      console.log(res)
+    } catch(err){
+      console.log(err.response.data)
+    }
+    };
+    getUser()
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
   );
 }

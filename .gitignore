@@ -17,6 +17,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
+# REMOVING .env FROM GIT IGNORE SO THEY CAN TEST THE CHALLENGE.
+# .env
 
 npm-debug.log*
 yarn-debug.log*

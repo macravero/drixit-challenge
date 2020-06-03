@@ -2,16 +2,32 @@
   "name": "drixit-challenge",
   "version": "0.1.0",
   "private": true,
+  "description": "react tech challenge for drixit",
+  "main": "index.js",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.16",
+    "npm-run-all": "^4.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "scripts": {
     "start": "react-scripts start",
+    "server": "nodemon server.js",
+    "boot": "npm-run-all -p start server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
