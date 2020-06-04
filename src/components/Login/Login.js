@@ -4,16 +4,15 @@ import Form from '../Form/Form';
 import Error from '../Error/Error'
 import Logo from '../../media/logo.jpeg';
 import styles from './login.module.scss';
+import * as C from '../../shared/constants'
 
 const Login = ({history}) => {
   const [formData, setFormData] = useState({email:'', password: ''})
   const [validEmail, setValidEmail] = useState(false);
   const [error, setError] = useState({isError: false, message: ''})
 
-
   useEffect(()=>{
-      const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      const validity = regex.test(formData.email.toLowerCase());
+      const validity = C.REGEX_PATTERNS.EMAIL.test(formData.email.toLowerCase());
       setValidEmail(validity);
   },[formData])
 
@@ -27,9 +26,9 @@ const Login = ({history}) => {
   const handleLogin = async e =>{
     e.preventDefault();
     try {
-      const url = 'http://localhost:3001/api/v0/login';
+      const url = `${C.ENDPOINTS.BASE}${C.ENDPOINTS.LOGIN}`;
       const res = await axios.post(url,formData)
-      localStorage.setItem('drixit-JWT', res.data)
+      localStorage.setItem(C.TOKEN_NAME, res.data)
       history.push('/user');
     } catch(err){
       setError({

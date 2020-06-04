@@ -4,13 +4,15 @@ import axios from 'axios'
 import styles from './user.module.scss'
 import Error from '../Error/Error'
 import UserData from '../userData/UserData'
+import * as C from '../../shared/constants'
+
 
 const User = () => {
 
   const [userData, setUserData] = useState({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState({isError: false, message: ''});
-  const token = localStorage.getItem('drixit-JWT');
+  const token = localStorage.getItem(C.TOKEN_NAME);
 
   useEffect(()=>{
     const config = {
@@ -22,13 +24,12 @@ const User = () => {
     const getUser = async () =>{
       if (token){
       try{
-        const url = 'http://localhost:3001/api/user/user-info';
+        const url = `${C.ENDPOINTS.BASE}${C.ENDPOINTS.USER}`;
         const res = await axios.get(url, config)
         setUserData(res.data);
-        console.log(res.data)
         setLoading(false);
       } catch(err){
-        localStorage.removeItem('drixit-JWT')
+        localStorage.removeItem(C.TOKEN_NAME)
         setError({
           isError: true,
           message: err.response.data
