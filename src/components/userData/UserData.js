@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import styles from './userData.module.scss'
+
 const UserData = ({data}) => {
   const {age, avatar, email, name, role, surname} = data
   return (

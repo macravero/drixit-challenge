@@ -5,19 +5,27 @@ Bootstraped with CRA, challenge for Drixit.
 
 backend express + node. Endpoints from localhost:3001. Really poor CORS.
 
-Generating and validating JWT, still not storing it (deciding for either localstorage or httpcookies).
+Generating and validating JWT, currently stored in localstorage. **This is dangerous and should be refactored**
 
-Created extra post endpoint for making new users and simplify the loading of them to mongoDB. Not requested. Not even protected.
+Created extra post endpoint for making new users and simplify the upload to mongoDB. Not requested. Not even protected.
 
 Using Hapi for schema validations, and npm run all to run parallel scripts.
 
 Using bcrypr for salt-based password hashing. Salt level generated is hardcoded and probably bad.
 
-NEED TO ATTACH A FRONT END. Just picking up data from hardcoded jwt in app to validate everything works correctly. WIP.
+Added login and user screens. By default, `/` will redirect to `/login`.
+
+`user` screen will handle both invalid tokens and guest users, allowing them to go back to the `login` screen. On the case of invalid jwt, it will be removed.
+
+Current error handling is in the component level. I should either create a HOC and context for errors. Will probably refactor.
+
+I'm not a fan of my current folder structure. i should refactor it in a way that containers and components are two separate layers.
+
+Design is not my strength. I tried to do my best effort with the idea of screens provided.
 
 Connected to a cluster in MongoDB. I'm pushing my .env because this is a dummy project for a challenge. Should be configured on host if project deploys.
 
-Testing WIP (I have literally never tested backend so I'll probably create simple unit tests on the front to be honest). Nothing to test because there's no front yet.
+Testing WIP (I have literally never tested backend so I'll probably create simple unit tests on the front to be honest). 
 
 I should split package json into two probably. No point on installing all dependencies if I want to maybe split starting of server and front end. Will also be easier to deploy. I'm pretty sure Docker would be a great solution here but I have no idea what docker does.
 
