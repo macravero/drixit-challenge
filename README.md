@@ -1,5 +1,5 @@
 
-### TO DO: Proper Readme. Right know it's just pointers:
+### TO DO: Proper Readme. Right now it's just pointers:
 
 Bootstraped with CRA, challenge for Drixit.
 
