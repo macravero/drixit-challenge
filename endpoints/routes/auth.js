@@ -32,7 +32,7 @@ router.post('/register', async (req,res)=>{
   // post user
   try {
     const savedUser = await user.save();
-    // REMEMBER TO RETURN SOMETHING SMALLER THAN THE WHOLE USER (INSECURE)
+    // RETURN SOMETHING SMALLER THAN THE WHOLE USER (INSECURE)
     res.send(savedUser);
   } catch(err){
      res.status(400).send(err);
