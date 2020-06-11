@@ -1,6 +1,3 @@
-
-### TO DO: Proper Readme. Right now it's just pointers:
-
 # Drixit fullstack challenge.
 
 I was requested to create a login page and show the user info on successful login. There were no UX or UI requests, but a sample site to base my design off. Logo is a but iffy because I kind of stole it from their facebook page.
