@@ -1,0 +1,20 @@
+.NotFound{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & a{
+    background: blue;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 5%;
+    margin-top: 2rem;
+    display: block;
+    width: 125px;
+    margin: 0 auto;
+  }
+}

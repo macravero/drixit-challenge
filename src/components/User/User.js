@@ -1,9 +1,10 @@
-import React, {useState,useEffect} from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useState, useEffect, useContext} from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import styles from './user.module.scss'
-import Error from '../Error/Error'
 import UserData from '../userData/UserData'
+import { ErrorContext } from '../../context/errorContext'
 import * as C from '../../shared/constants'
 
 
@@ -11,15 +12,16 @@ const User = () => {
 
   const [userData, setUserData] = useState({})
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState({isError: false, message: ''});
   const token = localStorage.getItem(C.TOKEN_NAME);
+  const {showError } = useContext(ErrorContext)
 
   useEffect(()=>{
     const config = {
       headers: {
         'Accept': '*/*',
         'auth-token': token
-      }
+      },
+      timeout: 2000
     }
     const getUser = async () =>{
       if (token){
@@ -30,7 +32,7 @@ const User = () => {
         setLoading(false);
       } catch(err){
         localStorage.removeItem(C.TOKEN_NAME)
-        setError({
+        showError({
           isError: true,
           message: err.response.data
         });
@@ -42,7 +44,6 @@ const User = () => {
   
   return (
     <div className={styles.User}>
-      {error.isError && <Error message={error.message}/>}
       {!loading && <UserData data={userData} />}
       {!token && 
       <div>

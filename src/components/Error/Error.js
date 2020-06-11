@@ -1,10 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styles from './error.module.scss'
+import { ErrorContext } from '../../context/errorContext'
 
-const Error = ({message}) => {
+
+const Error = () => {
+
+  const { error } = useContext(ErrorContext);
+
   return (
-    <div className={styles.Error}>
-      {`There has been an error: ${message}`}
+    error.isError && <div className={styles.Error}>
+      {error.message}
     </div>
   )
 }
